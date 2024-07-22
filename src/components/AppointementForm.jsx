@@ -34,9 +34,12 @@ const AppointmentForm = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const { data } = await axios.get("http://localhost:4000/user/doctors", {
-          withCredentials: true,
-        });
+        const { data } = await axios.get(
+          "https://hospital-management-backend-1-mwy0.onrender.com/user/doctors",
+          {
+            withCredentials: true,
+          }
+        );
         setDoctors(data.doctors);
       } catch (error) {
         console.error("Error fetching doctors:", error);
@@ -53,7 +56,7 @@ const AppointmentForm = () => {
     try {
       const hasVisitedBool = Boolean(hasVisited);
       const { data } = await axios.post(
-        "http://localhost:4000/appointment/post",
+        "https://hospital-management-backend-1-mwy0.onrender.com/appointment/post",
         {
           firstName,
           lastName,
@@ -90,7 +93,7 @@ const AppointmentForm = () => {
     setDob("");
     setGender("");
     setAppointmentDate("");
-    setDepartment("Pediatrics"); // Reset department to default value
+    setDepartment(""); // Reset department to default value
     setDoctorFirstName("");
     setDoctorLastName("");
     setHasVisited(false); // Reset hasVisited to false

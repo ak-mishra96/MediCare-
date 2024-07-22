@@ -6,7 +6,6 @@ import HowitWork from '../components/HowitWork'
 const Home = () => {
   return (
     <div>
-      {/* <Register/> */}
       <Hero
         title={
           "Welcome to Arun Medical Insitute | Your Trusted HealthCare Provider"
@@ -15,7 +14,6 @@ const Home = () => {
       />
       <Department />
       <HowitWork />
-      {/* <Biography image={"/about.png"} /> */}
 
       <MessageForm />
     </div>

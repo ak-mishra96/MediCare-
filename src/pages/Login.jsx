@@ -1,50 +1,49 @@
-import axios from 'axios';
-import React, { useContext, useState } from 'react'
+import axios from "axios";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate, Navigate } from "react-router-dom";
-import {toast} from "react-toastify";
-import {Context} from '../index.js'
-import { url } from '../Api.jsx';
+import { toast } from "react-toastify";
+import { Context } from "../index.js";
 
 const Login = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
- 
-  const [email,setEmail] = useState("");
-  const [ password,setPassword] = useState("");
-  const [ confirmPassword ,setConfirmPassword] = useState("");
-  const [ role ,setRole] = useState("");
-  
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [role, setRole] = useState("");
+
   const navigateTo = useNavigate();
 
-  const handleLogin=async(e)=>{
-     e.preventDefault();
-     try{
-           await axios.post(
-             `${url}/user/login`,
-             {email, password ,confirmPassword,role},
-             {
-               withCredentials: true,
-               headers: { "Content-Type": "application/json" },
-             }
-           ).then((res)=>{
-              console.log("login message:=>"+ res);
-              toast.success("👍👍👍" + res.data.message);
-              setIsAuthenticated(true);
-              navigateTo('/');
-              setEmail("");
-              setPassword("");
-              setConfirmPassword("");
-              setRole("");
-           });
-     }catch(error)
-     {
-       console.log("login error message:=>"+error);
-       toast.error(error.response.data.message)
-     }
-  }
- 
-  if(isAuthenticated)
-  {
-    return <Navigate to={"/"}/>
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await axios
+        .post(
+          "https://hospital-management-backend-1-mwy0.onrender.com/user/login",
+          { email, password, confirmPassword, role },
+          {
+            withCredentials: true,
+            headers: { "Content-Type": "application/json" },
+          }
+        )
+        .then((res) => {
+          console.log("login message:=>" + res);
+          toast.success("👍👍👍" + res.data.message);
+          setIsAuthenticated(true);
+          navigateTo("/");
+          setEmail("");
+          setPassword("");
+          setConfirmPassword("");
+          setRole("");
+        });
+    } catch (error) {
+      console.log("login error message:=>" + error);
+      toast.error(error.response.data.message);
+    }
+  };
+
+  if (isAuthenticated) {
+    return <Navigate to={"/"} />;
   }
 
   return (
@@ -127,12 +126,12 @@ const Login = () => {
                 <option value="Patient" className="bg-gray-700 text-white">
                   Patient
                 </option>
-                <option value="Doctor" className="bg-gray-700 text-white">
+                {/* <option value="Doctor" className="bg-gray-700 text-white">
                   Doctor
                 </option>
                 <option value="Admin" className="bg-gray-700 text-white">
                   Admin
-                </option>
+                </option> */}
               </select>
             </div>
 
@@ -156,6 +155,6 @@ const Login = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Login
+export default Login;

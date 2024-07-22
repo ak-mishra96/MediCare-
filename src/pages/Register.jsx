@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { url } from "../Api";
+
 const Register = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -19,7 +19,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${url}/user/patient/register`,
+        "https://hospital-management-backend-1-mwy0.onrender.com/user/patient/register",
         { firstName, lastName, email, phone, nic, dob, gender, password },
         {
           withCredentials: true,
@@ -28,15 +28,15 @@ const Register = () => {
       );
       console.log(response);
       toast.success("👍👍👍" + response.data.message);
-       navigateTo("/login");
-       setFirstName("");
-       setLastName("");
-       setEmail("");
-       setPhone("");
-       setNic(""); 
-       setDob("");
-       setGender("");
-       setPassword("");
+      navigateTo("/login");
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPhone("");
+      setNic("");
+      setDob("");
+      setGender("");
+      setPassword("");
     } catch (error) {
       if (error.response && error.response.data) {
         toast.error("🫢🫢🫢" + error.response.data.message);
@@ -46,9 +46,6 @@ const Register = () => {
       }
     }
   };
-  // if (isAuthenticated) {
-  //   return <Navigate to={"/"} />;
-  // }
 
   return (
     <div className="font-sans bg-white md:h-screen">

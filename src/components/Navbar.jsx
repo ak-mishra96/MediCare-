@@ -29,9 +29,12 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.get("http://localhost:4000/user/patient/logout", {
-        withCredentials: true,
-      });
+      await axios.get(
+        "https://hospital-management-backend-1-mwy0.onrender.com/user/patient/logout",
+        {
+          withCredentials: true,
+        }
+      );
       toast.success("Logout successful");
       setIsAuthenticated(false);
     } catch (error) {
@@ -78,7 +81,7 @@ const Navbar = () => {
             </li>
             <li className=" lg:py-3 px-3">
               <Link
-                to={"https://chic-kulfi-6f84c7.netlify.app/login"}
+                to={"/"}
                 className="hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]">
                 Admin
               </Link>
@@ -192,7 +195,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  to={"https://chic-kulfi-6f84c7.netlify.app/login"}
+                  to={"/"}
                   className="text-black hover:text-blue-600  flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
                   <MdDashboard className="mr-1 w-7 font-bold text-blue-700" />
                   Admin

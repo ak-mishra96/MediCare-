@@ -20,14 +20,15 @@ import axios from "axios";
 import Profile from "./profile/Profile.jsx";
 
 function App() {
-  const { isAuthenticated, setIsAuthenticated,user, setUser } = useContext(Context);
+  const { isAuthenticated, setIsAuthenticated, user, setUser } =
+    useContext(Context);
   const [isLoading, setIsLoading] = useState(true); // State to track initial loading
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/user/patient/me",
+          "https://hospital-management-backend-1-mwy0.onrender.com/user/patient/me",
           {
             withCredentials: true,
           }
@@ -44,7 +45,7 @@ function App() {
     };
 
     fetchUser();
-  }, [setIsAuthenticated]);
+  }, [setIsAuthenticated,setUser]);
 
   if (isLoading) {
     return <div>Loading...</div>; // Optional: Show loading indicator while fetching user
