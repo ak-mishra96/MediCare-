@@ -1,3 +1,2 @@
-export const url = "http://localhost:8080";
+export const url = "https://hospital-management-cu00.onrender.com";
 
-// export main_url = "https://hospital-management-backend-alpha.vercel.app"
