@@ -1,27 +1,22 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../index.js";
 import { toast } from "react-toastify";
-import { ImProfile } from "react-icons/im";
-import { ImCross } from "react-icons/im";
+import { ImProfile, ImCross } from "react-icons/im";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
-import { MdLogout, MdDashboard }
- from "react-icons/md";
- import {FaBook } from "react-icons/fa";
- import { FcAbout } from "react-icons/fc";
-
-
+import { MdLogout, MdDashboard } from "react-icons/md";
+import { FaBook } from "react-icons/fa";
+import { FcAbout } from "react-icons/fc";
 import axios from "axios";
 import { url } from "../Api.jsx";
 
 const Navbar = () => {
-
-  const { isAuthenticated, setIsAuthenticated ,user} = useContext(Context);
+  const { isAuthenticated, setIsAuthenticated, user } = useContext(Context);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const navigateTo = useNavigate();
-  
+
   const handleToggle = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -32,26 +27,28 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.get(
-        `${url}/user/patient/logout`,
-        {
-          withCredentials: true,
-        }
-      );
+      await axios.get(`${url}/user/patient/logout`, {
+        withCredentials: true,
+      });
       toast.success("Logout successful");
       setIsAuthenticated(false);
+      navigateTo("/login");
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(
+        "Logout failed: " + (error.response?.data?.message || "Unknown error")
+      );
     }
   };
 
-  const goLogin = () => {
-    navigateTo("/login");
-  };
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigateTo("/login");
+    }
+  }, [isAuthenticated, navigateTo]);
 
   return (
     <div>
-      <header className="fixed top-0 w-full flex shadow-xl py-4 px-4 sm:px-10 bg-white font-[sans-serif] min-h-[70px] tracking-wide ">
+      <header className="fixed top-0 w-full flex shadow-xl py-4 px-4 sm:px-10 bg-white font-[sans-serif] min-h-[70px] tracking-wide">
         <div className="flex items-center justify-between w-full">
           <a href="/">
             <img
@@ -60,29 +57,29 @@ const Navbar = () => {
               className="w-24"
             />
           </a>
-          <ul className="flex  gap-x-5 z-50  profilehidden ">
-            <li className="lg:py-3 px-3 ">
+          <ul className="flex gap-x-5 z-50 profilehidden">
+            <li className="lg:py-3 px-3">
               <Link
                 to={"/"}
                 className="hover:text-[#007bff] text-[#007bff] block font-semibold text-[15px]">
                 Home
               </Link>
             </li>
-            <li className="lg:py-3 px-3 ">
+            <li className="lg:py-3 px-3">
               <Link
                 to={"/appointment"}
                 className="hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]">
                 Appointment
               </Link>
             </li>
-            <li className=" lg:py-3 px-3">
+            <li className="lg:py-3 px-3">
               <Link
                 to={"/about"}
                 className="hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]">
                 About
               </Link>
             </li>
-            <li className=" lg:py-3 px-3">
+            <li className="lg:py-3 px-3">
               <Link
                 to={"https://hospital-management-admin.onrender.com"}
                 className="hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]">
@@ -91,7 +88,7 @@ const Navbar = () => {
             </li>
           </ul>
 
-          <div className="flex  profilehidden  max-lg:ml-auto space-x-3">
+          <div className="flex profilehidden max-lg:ml-auto space-x-3">
             {isAuthenticated ? (
               <div className="relative">
                 <button
@@ -115,7 +112,6 @@ const Navbar = () => {
                         View Profile
                       </li>
                     </Link>
-
                     <li
                       onClick={handleLogout}
                       className="py-2.5 px-5 flex items-center hover:bg-gray-100 text-[#333] text-sm cursor-pointer">
@@ -131,7 +127,7 @@ const Navbar = () => {
               </div>
             ) : (
               <button
-                onClick={goLogin}
+                onClick={() => navigateTo("/login")}
                 className="px-4 py-2 text-sm rounded-full font-bold text-white border-2 border-[#007bff] bg-[#007bff] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#007bff]">
                 Login
               </button>
@@ -163,7 +159,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to={"/"}
-                  className="text-black hover:text-blue-600  flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
+                  className="text-black hover:text-blue-600 flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
                   <FaBook className="mr-1 w-6 font-bold text-blue-700" />
                   Home
                 </Link>
@@ -173,7 +169,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to={"/appointment"}
-                  className="text-black hover:text-blue-600  flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
+                  className="text-black hover:text-blue-600 flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
                   <FaBook className="mr-1 w-6 font-bold text-blue-700" />
                   Appointment
                 </Link>
@@ -181,9 +177,9 @@ const Navbar = () => {
               <li>
                 <Link
                   to={"/about"}
-                  className="text-black hover:text-blue-600  flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
+                  className="text-black hover:text-blue-600 flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
                   <FcAbout className="mr-1 w-7 font-bold text-blue-700" />
-                  AboutUs
+                  About Us
                 </Link>
               </li>
             </ul>
@@ -191,15 +187,15 @@ const Navbar = () => {
               <li>
                 <Link
                   to={"/profile"}
-                  className="text-black hover:text-blue-600  flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
+                  className="text-black hover:text-blue-600 flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
                   <ImProfile className="mr-1 w-7 font-bold text-blue-700" />
-                  view profile
+                  View Profile
                 </Link>
               </li>
               <li>
                 <Link
                   to={"https://hospital-management-admin.onrender.com"}
-                  className="text-black hover:text-blue-600  flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
+                  className="text-black hover:text-blue-600 flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
                   <MdDashboard className="mr-1 w-7 font-bold text-blue-700" />
                   Admin
                 </Link>
@@ -207,7 +203,7 @@ const Navbar = () => {
             </ul>
             <ul className="mt-4 text-blue-600">
               <li onClick={handleLogout}>
-                <Link className="text-black hover:text-blue-600  flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
+                <Link className="text-black hover:text-blue-600 flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
                   <MdLogout className="mr-1 w-7 font-bold text-red-700" />
                   Logout
                 </Link>
