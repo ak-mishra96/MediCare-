@@ -82,7 +82,13 @@ const Navbar = () => {
                 About
               </Link>
             </li>
-            
+            <li className=" lg:py-3 px-3">
+              <Link
+                to={"https://hospital-management-admin.onrender.com"}
+                className="hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]">
+                Admin
+              </Link>
+            </li>
           </ul>
 
           <div className="flex  profilehidden  max-lg:ml-auto space-x-3">
@@ -188,6 +194,14 @@ const Navbar = () => {
                   className="text-black hover:text-blue-600  flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
                   <ImProfile className="mr-1 w-7 font-bold text-blue-700" />
                   view profile
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={"https://hospital-management-admin.onrender.com"}
+                  className="text-black hover:text-blue-600  flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
+                  <MdDashboard className="mr-1 w-7 font-bold text-blue-700" />
+                  Admin
                 </Link>
               </li>
             </ul>
