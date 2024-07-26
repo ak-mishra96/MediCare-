@@ -62,7 +62,7 @@ const [ role,setRole] = useState("");
       <div className="grid md:grid-cols-2 items-center gap-1 h-full">
         <div className="max-w-lg ">
           <img
-            src="https://www.csdtitsolution.com/HospitalManagementSoftware/h2.png"
+            src="/h2.png"
             className="ml-16 lg:max-w-full w-full h-full object-contain block mx-auto"
             alt="login-image"
           />

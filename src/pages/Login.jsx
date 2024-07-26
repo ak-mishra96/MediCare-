@@ -50,7 +50,7 @@ const Login = () => {
       <div className="grid md:grid-cols-2 items-center gap-2 h-full">
         <div className="max-w-lg p-4">
           <img
-            src="https://www.csdtitsolution.com/HospitalManagementSoftware/h2.png"
+            src="/h2.png"
             className="ml-16 lg:max-w-full w-full h-auto object-contain block mx-auto"
             alt="login-image"
           />
