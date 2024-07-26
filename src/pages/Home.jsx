@@ -14,7 +14,6 @@ const Home = () => {
       />
       <Department />
       <HowitWork />
-
       <MessageForm />
     </div>
   );

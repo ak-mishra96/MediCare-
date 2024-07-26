@@ -12,7 +12,7 @@ import {
 } from "react-icons/fa";
 
 const HowItWorks = () => {
-  // Array of card data
+
  const cardData = [
    {
      title: "Patient Registration",

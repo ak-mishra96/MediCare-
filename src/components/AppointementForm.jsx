@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { url } from "../Api";
 
 const AppointmentForm = () => {
   const [firstName, setFirstName] = useState("");
@@ -35,7 +36,7 @@ const AppointmentForm = () => {
     const fetchDoctors = async () => {
       try {
         const { data } = await axios.get(
-          "https://hospital-management-backend-1-mwy0.onrender.com/user/doctors",
+          `${url}/user/doctors`,
           {
             withCredentials: true,
           }
@@ -43,7 +44,6 @@ const AppointmentForm = () => {
         setDoctors(data.doctors);
       } catch (error) {
         console.error("Error fetching doctors:", error);
-        // Handle error (e.g., show toast message)
         toast.error("Error fetching doctors. Please try again later.");
       }
     };
@@ -56,7 +56,7 @@ const AppointmentForm = () => {
     try {
       const hasVisitedBool = Boolean(hasVisited);
       const { data } = await axios.post(
-        "https://hospital-management-backend-1-mwy0.onrender.com/appointment/post",
+        `${url}/appointment/post`,
         {
           firstName,
           lastName,
@@ -78,27 +78,24 @@ const AppointmentForm = () => {
         }
       );
       toast.success(data.message);
-      resetFormFields();
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPhone("");
+      setNic("");
+      setDob("");
+      setGender("");
+      setAppointmentDate("");
+      setDepartment(""); 
+      setDoctorFirstName("");
+      setDoctorLastName("");
+      setHasVisited(false);
+      setAddress("");
     } catch (error) {
       toast.error(error.response.data.message);
     }
   };
 
-  const resetFormFields = () => {
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setPhone("");
-    setNic("");
-    setDob("");
-    setGender("");
-    setAppointmentDate("");
-    setDepartment(""); // Reset department to default value
-    setDoctorFirstName("");
-    setDoctorLastName("");
-    setHasVisited(false); // Reset hasVisited to false
-    setAddress("");
-  };
 
   return (
     <div className="font-sans">

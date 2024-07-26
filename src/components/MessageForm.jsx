@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { IoSend } from "react-icons/io5";
+import { url } from "../Api";
 
 const MessageForm = () => {
   const [firstName, setFirstName] = useState("");
@@ -21,7 +22,7 @@ const MessageForm = () => {
 
     try {
       const response = await axios.post(
-        "https://hospital-management-backend-1-mwy0.onrender.com/message/send",
+        `${url}/message/send`,
         { firstName, lastName, email, phone, message },
         {
           withCredentials: true,
@@ -49,7 +50,7 @@ const MessageForm = () => {
     <div className="font-[sans-serif] mt-5">
       <div className="mt-20 text-center bg-gradient-to-r from-gray-600 to-gray-800 min-h-[160px] sm:p-6 p-4">
         <h4 className="sm:text-3xl text-2xl font-bold text-white mt-1">
-          📚Book An Appointment
+          📚Send Message 👉👉
         </h4>
       </div>
       <div className="-mt-20 mb-6 px-4">

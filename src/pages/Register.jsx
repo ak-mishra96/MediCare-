@@ -1,9 +1,13 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate,Navigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { url } from "../Api";
+import { Context } from "../index";
 
 const Register = () => {
+  const {isAuthenticated,setIsAuthenticated} = useContext(Context)
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -12,15 +16,15 @@ const Register = () => {
   const [dob, setDob] = useState("");
   const [gender, setGender] = useState("");
   const [password, setPassword] = useState("");
-
+const [ role,setRole] = useState("");
   const navigateTo = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://hospital-management-backend-1-mwy0.onrender.com/user/patient/register",
-        { firstName, lastName, email, phone, nic, dob, gender, password },
+        `${url}/user/patient/register`,
+        { firstName, lastName, email, phone, nic, dob, gender, password,role },
         {
           withCredentials: true,
           headers: { "Content-Type": "application/json" },
@@ -28,7 +32,8 @@ const Register = () => {
       );
       console.log(response);
       toast.success("👍👍👍" + response.data.message);
-      navigateTo("/login");
+      setIsAuthenticated(true);
+      navigateTo("/");
       setFirstName("");
       setLastName("");
       setEmail("");
@@ -37,6 +42,7 @@ const Register = () => {
       setDob("");
       setGender("");
       setPassword("");
+      setRole("");
     } catch (error) {
       if (error.response && error.response.data) {
         toast.error("🫢🫢🫢" + error.response.data.message);
@@ -46,9 +52,13 @@ const Register = () => {
       }
     }
   };
+  if (isAuthenticated) {
+    return <Navigate to={"/"} />;
+  }
+
 
   return (
-    <div className="font-sans bg-white md:h-screen">
+    <div className="font-sans bg-white md:h-screen mb-20 mt-10">
       <div className="grid md:grid-cols-2 items-center gap-1 h-full">
         <div className="max-w-lg ">
           <img
@@ -60,7 +70,7 @@ const Register = () => {
 
         <div className="flex items-center p-6 bg-[#0C172C] h-full lg:w-11/12 lg:ml-auto">
           <form onSubmit={handleRegister} className="max-w-lg w-full mx-auto">
-            <div className="mb-6">
+            <div className="mb-4 text-center">
               <h3 className="text-3xl font-bold text-yellow-400">
                 Create an account
               </h3>
@@ -97,7 +107,7 @@ const Register = () => {
               </div>
             </div>
 
-            <div className="mt-5">
+            <div className="mt-2">
               <label className="text-white font-bold text-xs block mb-1">
                 Email
               </label>
@@ -111,8 +121,32 @@ const Register = () => {
                 placeholder="Enter email"
               />
             </div>
-
             <div className="mt-5">
+              <label className="text-white font-bold text-sm block mb-2">
+                Role
+              </label>
+              <select
+                name="role"
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                required
+                className="w-full bg-white text-sm text-blue-900 font-semibold border-b border-gray-200 focus:border-yellow-900 px-2 py-2 outline-none">
+                <option value="" disabled defaultValue>
+                  Select role
+                </option>
+                <option value="Patient" className="bg-gray-700 text-white">
+                  Patient
+                </option>
+                {/* <option value="Doctor" className="bg-gray-700 text-white">
+                  Doctor
+                </option> */}
+                <option value="Admin" className="bg-gray-700 text-white">
+                  Admin
+                </option>
+              </select>
+            </div>
+
+            <div className="mt-2">
               <label className="text-white font-bold text-xs block mb-1">
                 Phone
               </label>
@@ -127,7 +161,7 @@ const Register = () => {
               />
             </div>
 
-            <div className="mt-5">
+            <div className="mt-2">
               <label className="text-white font-bold text-xs block mb-1">
                 NIC
               </label>
@@ -142,7 +176,7 @@ const Register = () => {
               />
             </div>
 
-            <div className="mt-5">
+            <div className="mt-2">
               <label className="text-white font-bold text-xs block mb-1">
                 Date of Birth
               </label>
@@ -156,7 +190,7 @@ const Register = () => {
               />
             </div>
 
-            <div className="mt-4">
+            <div className="mt-2">
               <label className="text-white font-bold text-xs block mb-1">
                 Gender
               </label>
@@ -181,7 +215,7 @@ const Register = () => {
               </select>
             </div>
 
-            <div className="mt-4">
+            <div className="mt-2">
               <label className="text-white font-bold text-xs block mb-1">
                 Password
               </label>
@@ -196,7 +230,7 @@ const Register = () => {
               />
             </div>
 
-            <div className="mt-8">
+            <div className="mt-4 flex gap-6">
               <button
                 type="submit"
                 className="w-max shadow-xl py-3 px-6 text-sm text-gray-800 font-semibold rounded-md bg-transparent bg-yellow-400 hover:bg-yellow-500 focus:outline-none">

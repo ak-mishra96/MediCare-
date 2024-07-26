@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate, Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Context } from "../index.js";
+import { url } from "../Api.jsx";
 
 const Login = () => {
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
@@ -19,7 +20,7 @@ const Login = () => {
     try {
       await axios
         .post(
-          "https://hospital-management-backend-1-mwy0.onrender.com/user/login",
+          `${url}/user/login`,
           { email, password, confirmPassword, role },
           {
             withCredentials: true,
@@ -27,7 +28,6 @@ const Login = () => {
           }
         )
         .then((res) => {
-          console.log("login message:=>" + res);
           toast.success("👍👍👍" + res.data.message);
           setIsAuthenticated(true);
           navigateTo("/");
@@ -37,7 +37,6 @@ const Login = () => {
           setRole("");
         });
     } catch (error) {
-      console.log("login error message:=>" + error);
       toast.error(error.response.data.message);
     }
   };
@@ -47,7 +46,7 @@ const Login = () => {
   }
 
   return (
-    <div className="font-sans bg-white md:h-screen">
+    <div className="font-sans bg-white md:h-screen sm:mt-16">
       <div className="grid md:grid-cols-2 items-center gap-2 h-full">
         <div className="max-w-lg p-4">
           <img
@@ -128,10 +127,10 @@ const Login = () => {
                 </option>
                 {/* <option value="Doctor" className="bg-gray-700 text-white">
                   Doctor
-                </option>
+                </option> */}
                 <option value="Admin" className="bg-gray-700 text-white">
                   Admin
-                </option> */}
+                </option>
               </select>
             </div>
 
@@ -144,7 +143,7 @@ const Login = () => {
               <p className="text-sm text-white mt-4">
                 having no account?{" "}
                 <Link
-                  to={"/register"}
+                  to='/register'
                   className="text-yellow-400 font-semibold hover:underline ml-1">
                   register here
                 </Link>

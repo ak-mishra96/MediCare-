@@ -11,14 +11,17 @@ import { MdLogout, MdDashboard }
  import {FaBook } from "react-icons/fa";
  import { FcAbout } from "react-icons/fc";
 
+
 import axios from "axios";
+import { url } from "../Api.jsx";
 
 const Navbar = () => {
-  const navigateTo = useNavigate();
+
   const { isAuthenticated, setIsAuthenticated ,user} = useContext(Context);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
-
+  const navigateTo = useNavigate();
+  
   const handleToggle = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -30,7 +33,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await axios.get(
-        "https://hospital-management-backend-1-mwy0.onrender.com/user/patient/logout",
+        `${url}/user/patient/logout`,
         {
           withCredentials: true,
         }
@@ -52,7 +55,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between w-full">
           <a href="/">
             <img
-              src="https://www.logomaker.com/wp-content/uploads/2018/06/first-aid-symbol-picture-id816820042.jpg"
+              src="https://st3.depositphotos.com/1005404/12571/i/450/depositphotos_125715264-stock-photo-small-build-hospital.jpg"
               alt="logo"
               className="w-24"
             />

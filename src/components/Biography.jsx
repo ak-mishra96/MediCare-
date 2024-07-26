@@ -1,34 +1,36 @@
-import React from 'react'
+import React from "react";
 
-const Biography = ({image}) => {
+const Biography = ({ image }) => {
   return (
     <div className="container biography">
       <div className="banner">
-        <img
-          src={image}
-          alt="img"
-        />
+        <img src={image} alt="img" />
       </div>
       <div className="banner">
         <p>Biography</p>
-        <h3>Who We Are</h3>
+        <h2>Hospital Management Biography</h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste esse
-          neque libero incidunt possimus. Fugiat hic labore libero, facere quasi
-          minima sed reprehenderit? Culpa ab ad assumenda architecto ducimus
-          consequatur?
+          We are leaders in hospital management, combining advanced technology
+          with compassionate care. Our journey started with a goal to improve
+          healthcare, focusing on patients and efficiency.
         </p>
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit, eaque.
+          We innovate to provide better patient experiences and improve
+          healthcare outcomes. Collaboration and continuous improvement are core
+          to our approach, empowering our teams to deliver exceptional care.
         </p>
-        <p>Lorem ipsum dolor sit amet.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quas nostrum obcaecati! Dolorem, atque minima. Animi repellat doloremque nulla doloribus!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium qui eveniet illo!</p>
-        <p>Lorem ipsum dolor sit.</p>
+        <p>
+          We prioritize quality and safety, setting high standards in healthcare
+          management. Our commitment drives us to excel and make a positive
+          impact on healthcare globally.
+        </p>
+        <p>
+          We are dedicated to transforming healthcare delivery worldwide, driven
+          by passion and a commitment to excellence.
+        </p>
       </div>
     </div>
   );
-}
+};
 
-export default Biography
-
+export default Biography;
