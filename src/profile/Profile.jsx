@@ -11,19 +11,16 @@ import {
   FaUserTie,
 } from "react-icons/fa";
 import { BiMaleFemale } from "react-icons/bi";
-import { useNavigate } from 'react-router-dom';
 
   
 const Profile = () => {
 
-  const NavigateTo = useNavigate();
+    const {user } = useContext(Context);
 
-    const {isAuthenticated,user } = useContext(Context);
-
-    if(!isAuthenticated)
-    {
-       NavigateTo("/");
-    }
+    // if(!isAuthenticated)
+    // {
+    //    NavigateTo("/");
+    // }
   return (
     <div class="p-6 mt-12">
       <div class="bg-white shadow-[0_4px_12px_-5px_rgba(0,0,0,0.4)] w-full max-w-sm rounded-lg overflow-hidden mx-auto font-[sans-serif] mt-4">
