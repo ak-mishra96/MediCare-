@@ -128,9 +128,9 @@ const Login = () => {
                 {/* <option value="Doctor" className="bg-gray-700 text-white">
                   Doctor
                 </option> */}
-                <option value="Admin" className="bg-gray-700 text-white">
+                {/* <option value="Admin" className="bg-gray-700 text-white">
                   Admin
-                </option>
+                </option> */}
               </select>
             </div>
 
