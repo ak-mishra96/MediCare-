@@ -41,11 +41,11 @@ const Navbar = () => {
     }
   };
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigateTo("/login");
-    }
-  }, [isAuthenticated, navigateTo]);
+  // useEffect(() => {
+  //   if (!isAuthenticated) {
+  //     navigateTo("/login");
+  //   }
+  // }, [isAuthenticated, navigateTo]);
 
   return (
     <div>
