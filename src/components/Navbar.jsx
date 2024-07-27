@@ -8,6 +8,7 @@ import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { MdLogout, MdDashboard } from "react-icons/md";
 import { FaBook } from "react-icons/fa";
 import { FcAbout } from "react-icons/fc";
+import { HiOutlineLogin } from "react-icons/hi";
 import axios from "axios";
 import { url } from "../Api.jsx";
 
@@ -202,12 +203,21 @@ const Navbar = () => {
               </li>
             </ul>
             <ul className="mt-4 text-blue-600">
-              <li onClick={handleLogout}>
-                <Link className="text-black hover:text-blue-600 flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
-                  <MdLogout className="mr-1 w-7 font-bold text-red-700" />
-                  Logout
-                </Link>
-              </li>
+              {isAuthenticated ? (
+                <li onClick={handleLogout}>
+                  <Link className="text-black hover:text-blue-600 flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
+                    <MdLogout className="mr-1 w-7 font-bold text-red-700" />
+                    Logout
+                  </Link>
+                </li>
+              ) : (
+                <li onClick={() => navigateTo("/login")}>
+                  <Link className="text-black hover:text-blue-600 flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
+                    <HiOutlineLogin className="mr-1 w-7 font-bold text-red-700" />
+                    Login
+                  </Link>
+                </li>
+              )}
             </ul>
           </ul>
         </div>
