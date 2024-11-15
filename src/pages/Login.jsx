@@ -57,7 +57,7 @@ const Login = () => {
         </div>
 
         <div className="flex items-center p-6 bg-[#0C172C] h-full lg:w-11/12 lg:ml-auto">
-          <form onSubmit={handleLogin} className="max-w-lg w-full mx-auto">
+          <form onSubmit={handleLogin} className="max-w-lg w-full mx-auto" id="login-form">
             <div className="mb-6">
               <h3 className="text-3xl font-bold text-yellow-400">
                 Login here👉👉
@@ -134,16 +134,34 @@ const Login = () => {
               </select>
             </div>
 
-            <div className="mt-8">
-              <button
-                type="submit"
-                className="w-max shadow-xl py-3 px-6 text-sm text-gray-800 font-semibold rounded-md bg-transparent bg-yellow-400 hover:bg-yellow-500 focus:outline-none">
-                Login
-              </button>
+            <div className="mt-8 ">
+              <div className="flex gap-4">
+                <button
+                  type="submit"
+                  className="w-max shadow-xl py-3 px-6 text-sm text-gray-800 font-semibold rounded-md bg-transparent bg-yellow-400 hover:bg-yellow-500 focus:outline-none">
+                  Login
+                </button>
+                <button
+                  type="button" // Prevent default form submission
+                  onClick={async () => {
+                    // Set Demo Values
+                     setEmail("arunyadav08062002@gmail.com");
+                     setPassword("12345");
+                     setConfirmPassword("12345");
+                     setRole("Patient");
+                    // Wait for state updates and trigger form submission
+                    setTimeout(() => {
+                      document.getElementById("login-form").requestSubmit();
+                    },0);
+                  }}
+                  className="w-max shadow-xl py-3 px-6 text-sm text-gray-800 font-semibold rounded-md bg-transparent bg-yellow-400 hover:bg-yellow-500 focus:outline-none">
+                  Demo Login
+                </button>
+              </div>
               <p className="text-sm text-white mt-4">
                 having no account?{" "}
                 <Link
-                  to='/register'
+                  to="/register"
                   className="text-yellow-400 font-semibold hover:underline ml-1">
                   register here
                 </Link>
