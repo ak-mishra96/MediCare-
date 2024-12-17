@@ -3,6 +3,7 @@ import Hero from '../components/Hero'
 import Department from '../components/Department'
 import MessageForm from '../components/MessageForm'
 import HowitWork from '../components/HowitWork'
+import AviliableDoctors from '../components/AviliableDoctors'
 const Home = () => {
   return (
     <div>
@@ -13,6 +14,7 @@ const Home = () => {
         imageURL={"/hero.png"}
       />
       <Department />
+      <AviliableDoctors/>
       <HowitWork />
       <MessageForm />
     </div>

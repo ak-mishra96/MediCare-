@@ -96,51 +96,52 @@ const Departments = () => {
     },
   };
 
-  return (
-    <div className="container departments mt-20"> {/* Add margin-top to push content below navbar */}
-      <h2>Check Departments👉👉</h2>
-      <Carousel
-        responsive={responsive}
-        infinite={true}
-        autoPlay={true}
-        ssr={true}
-        autoPlaySpeed={2000}
-        keyBoardControl={true}
-        removeArrowOnDeviceType={["tablet", "mobile"]}
-        itemClass="carousel-item-padding-40-px" // Add padding to each item
-      >
-        {departmentsArray.map((item, index) => (
-          <div
-            key={index}
-            className="boxshadow bg-white border p-2 w-full max-w-sm rounded-lg font-[sans-serif] overflow-hidden mx-auto lg:ml-4 z-0"
-            style={{ marginBottom: "20px" }} // Add margin-bottom to create space between items
-          >
-            <div className="min-h-[200px]">
-              <img
-                src={item.imageUrl}
-                className="w-full h-full object-cover rounded-lg"
-                alt={item.name}
-              />
+    return (
+      <div className="container departments mt-20"> {/* Add margin-top to push content below navbar */}
+        <h2>Check Departments👉👉</h2>
+        <Carousel
+          responsive={responsive}
+          infinite={true}
+          autoPlay={true}
+          ssr={true}
+          autoPlaySpeed={2000}
+          keyBoardControl={true}
+          removeArrowOnDeviceType={["tablet", "mobile"]}
+          itemClass="carousel-item-padding-40-px" // Add padding to each item
+        >
+          {departmentsArray.map((item, index) => (
+            <div
+              key={index}
+              className=" bg-gray border p-2 w-full max-w-sm rounded-lg font-[sans-serif] overflow-hidden mx-auto lg:ml-4 z-0"
+              style={{ marginBottom: "20px" }} // Add margin-bottom to create space between items
+            >
+              <div className="min-h-[200px]">
+                <img
+                  src={item.imageUrl}
+                  className="w-full h-full object-cover rounded-lg"
+                  alt={item.name}
+                />
+              </div>
+              <div className="p-3 text-center">
+                <h3 className="text-xl font-bold">{item.name}</h3>
+                <p className="mt-3 text-sm text-gray-500 leading-relaxed">
+                  {item.description}
+                </p>
+                <a href={item.reference}>
+                  <button
+                    type="button"
+                    className="mt-6 px-5 py-2.5 w-full rounded-lg text-white text-sm tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700"
+                  >
+                    Know more
+                  </button>
+                </a>
+              </div>
             </div>
-            <div className="p-3 text-center">
-              <h3 className="text-xl font-bold">{item.name}</h3>
-              <p className="mt-3 text-sm text-gray-500 leading-relaxed">
-                {item.description}
-              </p>
-              <a href={item.reference}>
-                <button
-                  type="button"
-                  className="mt-6 px-5 py-2.5 w-full rounded-lg text-white text-sm tracking-wider font-semibold border-none outline-none bg-blue-600 hover:bg-blue-700"
-                >
-                  Know more
-                </button>
-              </a>
-            </div>
-          </div>
-        ))}
-      </Carousel>
-    </div>
-  );
-};
+          ))}
+        </Carousel>
+      </div>
+    );
+  };
 
-export default Departments;
+  export default Departments;
+  
