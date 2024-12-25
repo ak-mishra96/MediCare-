@@ -7,7 +7,7 @@ import { ImProfile, ImCross } from "react-icons/im";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import { MdLogout, MdDashboard } from "react-icons/md";
 import { FaBook } from "react-icons/fa";
-import { FcAbout } from "react-icons/fc";
+// import { FcAbout } from "react-icons/fc";
 import { HiOutlineLogin } from "react-icons/hi";
 import axios from "axios";
 import { url } from "../Api.jsx";
@@ -75,9 +75,16 @@ const Navbar = () => {
             </li>
             <li className="lg:py-3 px-3">
               <Link
-                to={"/about"}
+                to={"/appointmentData"}
                 className="hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]">
-                About
+                AppointmentData
+              </Link>
+            </li>
+            <li className="lg:py-3 px-3">
+              <Link
+                to={"/aviliableDoctors"}
+                className="hover:text-[#007bff] text-gray-500 block font-semibold text-[15px]">
+                Doctors
               </Link>
             </li>
             <li className="lg:py-3 px-3">
@@ -177,10 +184,18 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  to={"/about"}
+                  to={"/appointmentData"}
                   className="text-black hover:text-blue-600 flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
-                  <FcAbout className="mr-1 w-7 font-bold text-blue-700" />
-                  About Us
+                  <FaBook className="mr-1 w-6 font-bold text-blue-700" />
+                  AppointmentData
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={"/aviliableDoctors"}
+                  className="text-black hover:text-blue-600 flex items-center hover:bg-blue-50 rounded px-4 py-3 transition-all">
+                  <FaBook className="mr-1 w-6 font-bold text-blue-700" />
+                  Doctors
                 </Link>
               </li>
             </ul>

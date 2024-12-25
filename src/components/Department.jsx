@@ -7,7 +7,7 @@ const Departments = () => {
     {
       name: "Pediatrics",
       description:
-        "Pediatrics is the branch of medicine that involves the medical care of infants, children, and adolescents. It encompasses a range of health services.",
+        "Pediatrics is the branch of medicine that involves the medical care of children, and adolescents. It encompasses a range of health services.",
       imageUrl: "/pedia.jpg",
       reference: "https://en.wikipedia.org/wiki/Pediatrics",
     },
@@ -34,19 +34,10 @@ const Departments = () => {
       reference: "https://en.wikipedia.org/wiki/Neurology",
     },
     {
-      name: "Oncology",
-      description:
-        "Oncology is the branch of medicine that deals with the prevention, diagnosis, and treatment of cancer, involving various therapeutic strategies.",
-      imageUrl:
-        "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/iStock-1181263174edit-1024x575.jpg?w=1155&h=1528",
-      reference: "https://en.wikipedia.org/wiki/Oncology",
-    },
-    {
       name: "Radiology",
       description:
         "Radiology involves the use of medical imaging technologies to diagnose and treat diseases. Techniques include X-rays, CT scans, and MRIs.",
-      imageUrl:
-        "https://shantilalhospital.com/wp-content/uploads/2024/01/doctor-getting-patient-ready-ct-scan-scaled.jpg",
+      imageUrl: "https://athaayuhospital.in/oaroaghy/2021/10/14.jpg",
       reference: "https://en.wikipedia.org/wiki/Medical_imaging",
     },
     {
@@ -70,6 +61,14 @@ const Departments = () => {
         "ENT (Ear, Nose, and Throat) specialists focus on the diagnosis and treatment of disorders related to the ear, nose, and throat regions.",
       imageUrl: "/ent.jpg",
       reference: "https://en.wikipedia.org/wiki/Otorhinolaryngology",
+    },
+    {
+      name: "Oncology",
+      description:
+        "Oncology is the branch of medicine that deals with the prevention, diagnosis, and treatment of cancer, involving various therapeutic strategies.",
+      imageUrl:
+        "https://www.oregoncancer.com/hubfs/Pros%20and%20Cons%20of%20Treating%20Cancer%20with%20Radiation%20Therapy%20%281%29.jpg",
+      reference: "https://en.wikipedia.org/wiki/Oncology",
     },
   ];
 

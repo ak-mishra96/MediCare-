@@ -46,7 +46,7 @@ const hours = [
 const Footer = () => {
   return (
     <div>
-      <footer className="font-sans tracking-wide bg-slate-900 px-8 py-12">
+      <footer className="font-sans tracking-wide bg-slate-900 px-8 py-12 mt-9">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-10">
           <div>
             <a href="/">
@@ -112,42 +112,6 @@ const Footer = () => {
                   href="/"
                   className="text-white hover:text-yellow-500 text-sm">
                   Health Checkups
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-yellow-500 hover:text-white font-semibold text-lg relative max-sm:cursor-pointer">
-              Quick Link
-            </h4>
-
-            <ul className="mt-6 space-y-5">
-              <li>
-                <a
-                  href="/"
-                  className="hover:text-yellow-400  text-white text-sm">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/about"
-                  className="hover:text-yellow-400  text-white text-sm">
-                  About us
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/"
-                  className="hover:text-yellow-400  text-white text-sm">
-                  Send message
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/appointment"
-                  className="hover:text-yellow-400  text-white text-sm">
-                  Book Appointment
                 </a>
               </li>
             </ul>

@@ -3,15 +3,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { Context } from "../index";
 import { Navigate } from "react-router-dom";
-import { BiMaleFemale } from "react-icons/bi";
-
-import {
-  FaEnvelope,
-  FaPhoneAlt,
-  FaBirthdayCake,
-  FaIdCard,
-  FaBuilding,
-} from "react-icons/fa";
 import { url } from "../Api";
 
 const AviliableDoctors = () => {
@@ -60,43 +51,30 @@ const AviliableDoctors = () => {
                 <div
                   key={item._id}
                   className="bg-white rounded-lg overflow-hidden shadow-lg border border-gray-200">
-                  <img
-                    src={
-                      item.docAvatar
-                        ? item.docAvatar.url
-                        : "https://via.placeholder.com/300"
-                    }
-                    alt={`Dr.${item.firstName} ${item.lastName}`}
-                    className="w-full h-60 object-contain"
-                  />
+                  <div className="min-h-[256px]">
+                    <img
+                      src={
+                        item.docAvatar
+                          ? item.docAvatar.url
+                          : "https://via.placeholder.com/300"
+                      }
+                      alt={`Dr.${item.firstName} ${item.lastName}`}
+                      className="w-full rounded-2xl"
+                    />
+                  </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-blue-900 mb-2 text-center">
+                    <h3 className="text-xl text-gray-800 font-extrabold text-center">
                       {`Dr.${item.firstName} ${item.lastName}`}
                     </h3>
-                    <p className="text-gray-900 text-sm mb-2 flex items-center">
-                      <FaEnvelope className="mr-2 text-blue-500 text-xl" />
-                      <strong>Email:</strong> {item.email}
+                    <p className="mt-4 text-gray-800 text-lg font-bold">
+                      Department: {item.doctorDepartment}
                     </p>
-                    <p className="text-gray-900 text-sm mb-2 flex items-center">
-                      <FaPhoneAlt className="mr-2 text-blue-500 text-xl" />
-                      <strong>Phone:</strong> {item.phone}
-                    </p>
-                    <p className="text-gray-900 text-sm mb-2 flex items-center">
-                      <FaBirthdayCake className="mr-2 text-blue-500 text-xl" />
-                      <strong>DOB:</strong> {item.dob.substring(0, 10)}
-                    </p>
-                    <p className="text-gray-900 text-sm mb-2 flex items-center">
-                      <FaBuilding className="mr-2 text-blue-500 text-xl" />
-                      <strong>Department:</strong> {item.doctorDepartment}
-                    </p>
-                    <p className="text-gray-900 text-sm mb-2 flex items-center">
-                      <FaIdCard className="mr-2 text-blue-500 text-xl" />
-                      <strong>NIC:</strong> {item.nic}
-                    </p>
-                    <p className="text-gray-900 text-sm mb-2 flex items-center">
-                      <BiMaleFemale className="mr-2 text-blue-500 text-xl" />
-                      <strong>Gender:</strong> {item.gender}
-                    </p>
+                    <div className="text-center mt-4">
+                      <button
+                        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                        Details
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))
@@ -106,7 +84,6 @@ const AviliableDoctors = () => {
               </h1>
             )}
           </div>
-          
           <div className="text-center mt-6">
             {visibleDoctors < doctors.length && (
               <button
@@ -130,5 +107,3 @@ const AviliableDoctors = () => {
 };
 
 export default AviliableDoctors;
-
-

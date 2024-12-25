@@ -5,7 +5,6 @@ import {
   Route,
 } from "react-router-dom";
 import Home from "./pages/Home.jsx";
-import About from "./pages/About.jsx";
 import Appointment from "./components/AppointementForm.jsx";
 import Register from "./pages/Register.jsx";
 import Login from "./pages/Login.jsx";
@@ -14,13 +13,15 @@ import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import { Context } from "./index.js";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect} from "react";
 import axios from "axios";
 import Profile from "./profile/Profile.jsx";
 import { url } from "./Api.jsx";
+import AppointmentDetails from "./components/AppointementDetails.jsx";
+import AviliableDoctors from "./components/AviliableDoctors.jsx";
 
 function App() {
-  const { isAuthenticated, setIsAuthenticated, user, setUser } =useContext(Context);
+  const { isAuthenticated, setIsAuthenticated, setUser } =useContext(Context);
   
 
   useEffect(() => {
@@ -48,10 +49,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/appointment" element={<Appointment />} />
-        <Route path="/about" element={<About />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile/>} />
+        <Route path="/appointmentData" element={<AppointmentDetails/>}/>
+        <Route path="/aviliableDoctors" element={<AviliableDoctors/>}/>
       </Routes>
       <Footer />
       <ToastContainer
