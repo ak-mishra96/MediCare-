@@ -49,7 +49,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <header className="fixed top-0 w-full flex shadow-xl py-4 px-4 sm:px-10 bg-white font-[sans-serif] min-h-[70px] tracking-wide">
+      <header className="fixed top-0 w-full flex shadow-xl py-1 px-4 sm:px-10 bg-white font-[sans-serif] min-h-[70px] tracking-wide">
         <div className="flex items-center justify-between w-full">
           <a href="/">
             <img

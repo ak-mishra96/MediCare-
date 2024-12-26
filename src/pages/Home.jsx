@@ -6,7 +6,7 @@ import HowitWork from '../components/HowitWork'
 // import AviliableDoctors from '../components/AviliableDoctors'
 const Home = () => {
   return (
-    <div>
+    <div className='-mt-4'>
       <Hero
         title={
           "Welcome to Arun Medical Insitute | Your Trusted HealthCare Provider"
