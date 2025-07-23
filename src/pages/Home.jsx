@@ -9,7 +9,7 @@ const Home = () => {
     <div className='-mt-4'>
       <Hero
         title={
-          "Welcome to Arun Medical Insitute | Your Trusted HealthCare Provider"
+          "Welcome to AK Medical Insitute | Your Trusted HealthCare Provider"
         }
         imageURL={"/hero.png"}
       />

@@ -192,7 +192,7 @@ const Footer = () => {
           <p className="text-white text-sm md:ml-auto">
             Copyright © 2024
             <a href="/" className="text-yellow-500 hover:underline mx-1">
-              Arun Yadav
+              Atul Mishra
             </a>
             All Rights Reserved.
           </p>
