@@ -1,4 +1,4 @@
-export const url = "https://hospital-backend-lfcw.onrender.com/";
+export const url = "https://hospital-backend-lfcw.onrender.com";
 
 // http://localhost:8080
 
